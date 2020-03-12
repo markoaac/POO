@@ -1,53 +1,78 @@
 public class Gasolinera{
+   //1.- Declarar las variables necesarias
    private float costoMagna;
-   public void setCostoMagna(float costo){
-     this.costoMagna = costo;
+   private float costoPremium;
+   private float litrosMagna;
+   private float litrosPremium;
+   private float TotalVenta;
+   //2.-Los métodos set y get
+   public void setCostoMagna(float cm){
+      this.costoMagna = cm;
    }
    public float getCostoMagna(){
-      return costoMagna;
+      return this.costoMagna;
    }
-   private float costoPremium;
-   
+   //costo premium
    public void setCostoPremium(float cp){
-             this.costoPremium = cp;
+      this.costoPremium = cp;
    }
    public float getCostoPremium(){
-           return costoPremium;
-   }  
-   private float litrosMagna;
+      return this.costoPremium;
+   }
+   //Variable litros magna
    public void setLitrosMagna(float lm){
-      this.litrosMagna = lm;
+      litrosMagna = lm;
    }
    public float getLitrosMagna(){
       return litrosMagna;
    }
-   private float litrosPremium;
-   public void setlitrosPremium(float litrosPremium){
-     this.litrosPremium = litrosPremium;
-     }
-   public float getlitrosPremium (){
-     return litrosPremium;
-     } 
-     private float TotalVenta;
-     public void setTotalVenta (float TotalVenta){
-      this.TotalVenta = TotalVenta;
-     } 
-     public float getTotalVenta (){
+   //Variable litros premium
+   public void setLitrosPremium(float lp){
+      this.litrosPremium = lp;
+   }
+   public float getLitrosPremium(){
+      return this.litrosPremium;
+   }
+   //total venta
+   public void setTotalVenta(float tv){
+      this.TotalVenta = tv;
+   }
+   public float getTotalVenta(){
       return TotalVenta;
-     }
-     
-     public Gasolinera(){
-      //this.costoMagna = 19;
-      this.setCostoMagna(19);
-      this.costoPremium = 21;
-      //this.setCostoPremium(21);
-     }
-     public Gasolinera(){
-        setCostoPremium(21);
-        setCostoMagna(19);
-     }
-     public Gasolinera(float m,float p){
-        setCostoPremium(p);
-        setCostoMagna(m);
-     }
+   }
+   //3.- Constructor
+   public Gasolinera(){
+      this.setCostoPremium(21);
+      setCostoMagna(19);
+   }
+   public Gasolinera(float cp){
+      setCostoMagna(19);
+      setCostoPremium(cp);
+   }
+   public Gasolinera(float cm, float cp){
+      setCostoMagna(cm);
+      setCostoPremium(cp);
+   }
+   //4.- Realizar los métodos que faltan
+   public float CalcularTotalMagna(){
+      return getCostoMagna() * 
+      getLitrosMagna();
+   }
+   public float CalcularTotalPremium(){
+      return getCostoPremium() * getLitrosPremium();
+   }
+   public float CalcularTotalPagar(){
+      float total = CalcularTotalMagna() + CalcularTotalPremium();
+      setTotalVenta(total);
+      return this.TotalVenta;
+   }
+   //5.- toString()
+   @Override
+   public String toString(){
+      return "Total de premium: " + CalcularTotalPremium() +
+      "\nTotal de Magna: " + CalcularTotalMagna() +
+      "\nTotal a pagar: " + CalcularTotalPagar();
+   }
+   
+   
 }   
